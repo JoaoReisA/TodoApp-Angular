@@ -49,6 +49,11 @@ if (!form.invalid){
       data: todo
     });
 
+    dialogRef.afterClosed().subscribe((result) =>{
+      if(result){
+        this.dataService.updateTodo(index, result)
+      }
+    })
 
 
     // this.dataService.updateTodo()
