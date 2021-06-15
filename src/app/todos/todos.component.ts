@@ -45,7 +45,8 @@ if (!form.invalid){
     const index = this.todos.indexOf(todo)
 
     let dialogRef = this.dialog.open(EditTodoDialogComponent, {
-      width: '700px'
+      width: '700px',
+      data: todo
     });
 
 
