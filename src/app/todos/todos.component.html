@@ -4,20 +4,34 @@
 
 <div class="container">
   <div class="add-todo-box">
-    <form>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
       <h2 class="title is-5">New Todo</h2>
 
-      <div class="field is-grouped">
+      <div class="field is-grouped" style="margin: 0">
         <p class="control is-expanded">
-          <input type="text" class="input" placeholder="Type todo text here...">
+          <input
+            ngModel
+            #todoTextField="ngModel"
+            required
+            minlength="2"
+            name="text"
+            type="text"
+            class="input"
+            placeholder="Type todo text here..."
+          />
         </p>
         <p class="control">
-          <button class="button alt-gradient-button">
+          <button type="submit" class="button alt-gradient-button">
             <i class="material-icons">add</i>
             Add
           </button>
         </p>
       </div>
+<div *ngIf="todoTextField.invalid">
+  <p class="help is-danger" *ngIf="todoTextField.errors?.required">Please enter the text of your todo</p>
+  <p class="help is-danger" *ngIf="todoTextField.errors?.minlength">Todo text must be at least 2 characters</p>
+</div>
+
     </form>
   </div>
 </div>
@@ -25,12 +39,16 @@
 <section class="section">
   <div class="container">
     <div class="todos-list">
-      <div class="todo-item completed">
+      <div
+        class="todo-item"
+        *ngFor="let todo of todos"
+        [class.completed]="todo.completed"
+      >
         <div class="check-box">
           <i class="material-icons">check</i>
         </div>
         <div class="todo-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolor, consequuntur porro eveniet sint corrupti voluptatem quisquam iure minima deleniti saepe incidunt iusto, aliquid quam fugit facilis suscipit reiciendis at.
+          {{ todo.text }}
         </div>
         <div class="todo-controls-box">
           <div class="todo-control-button">
@@ -40,25 +58,6 @@
           <div class="todo-control-button is-danger">
             <i class="material-icons">delete</i>
           </div>
-
-        </div>
-      </div>
-      <div class="todo-item">
-        <div class="check-box">
-          <i class="material-icons">check</i>
-        </div>
-        <div class="todo-text">
-          this is a placeholder
-        </div>
-        <div class="todo-controls-box">
-          <div class="todo-control-button">
-            <i class="material-icons">edit</i>
-          </div>
-
-          <div class="todo-control-button is-danger">
-            <i class="material-icons">delete</i>
-          </div>
-
         </div>
       </div>
     </div>
