@@ -8,6 +8,8 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditTodoDialogComponent } from './edit-todo-dialog/edit-todo-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { TooltipDirective } from './shared/tooltip.directive';
+import { TollTipSingletonDirective } from './shared/toll-tip-singleton.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TodosComponent,
     TodoItemComponent,
     EditTodoDialogComponent,
+    TooltipDirective,
+    TollTipSingletonDirective,
 
   ],
   imports: [
